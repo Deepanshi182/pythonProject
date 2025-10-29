@@ -1,12 +1,7 @@
-Flask>=2.0
-pandas
-numpy
+Flask
+gunicorn
+nltk
 scikit-learn
 spacy
-pdfminer.six
+PyPDF2
 python-docx
-nltk
-reportlab
-python-dotenv
-gunicorn
-After installing, run: python -m spacy download en_core_web_sm
