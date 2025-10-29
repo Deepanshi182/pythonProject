@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Match Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='result.css') }}">
+
+</head>
+<body>
+
+<div class="result-container">
+    <h1>📊 Analysis Result</h1>
+
+    <div class="result-box">
+        <div class="score-circle">{{ result.similarity }}%</div>
+        <p class="score-label">
+            {% if result.similarity >= 80 %}
+                ✅ Excellent Match
+            {% elif result.similarity >= 60 %}
+                ⚡ Good Match
+            {% elif result.similarity >= 40 %}
+                ⚠️ Moderate Match
+            {% else %}
+                ❌ Weak Match
+            {% endif %}
+        </p>
+    </div>
+
+    <div class="details">
+        <h2>Extracted Skills:</h2>
+        <p>{{ result.extracted_skills | join(', ') }}</p>
+
+        <h2>Job Skills:</h2>
+        <p>{{ result.job_skills | join(', ') }}</p>
+
+        <h2>Missing Skills:</h2>
+        <p class="missing">{{ result.missing_skills | join(', ') if result.missing_skills else "None 🎉" }}</p>
+
+        <h2>💡 Suggestions:</h2>
+        {% for s in result.suggestions %}
+        <p>{{ s }}</p>
+        {% endfor %}
+    </div>
+
+    <a href="/" class="back-btn">⬅️ Analyze Another Resume</a>
+</div>
+
+<footer>
+    <p>© 2025 AI Resume Analyzer | Powered by Flask + scikit-learn + spaCy</p>
+</footer>
+
+</body>
+</html>

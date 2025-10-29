@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Resume Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+
+<div class="container">
+    <h1>🤖 AI Resume Analyzer</h1>
+    <p class="subtitle">Analyze your resume and see how well it matches the job description</p>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form action="/" method="POST" enctype="multipart/form-data" class="upload-form">
+        <label>📄 Upload Resume (.pdf / .docx)</label>
+        <input type="file" name="resume" required>
+
+        <label>🧠 Paste Job Description</label>
+        <textarea name="job_text" placeholder="Paste the full job description here..." required>{{ job_text }}</textarea>
+
+        <label>🧩 Optional: Job Skills (comma-separated)</label>
+        <input type="text" name="job_skills" placeholder="e.g. Python, Flask, SQL, React">
+
+        <button type="submit">🔍 Analyze Resume</button>
+    </form>
+</div>
+
+<footer>
+    <p>© 2025 AI Resume Analyzer | Built with 💙 using Flask + NLP</p>
+</footer>
+
+</body>
+</html>
