@@ -3,6 +3,15 @@ from flask import Flask, render_template, request, send_from_directory
 from werkzeug.utils import secure_filename
 from utils import extractors
 from models.nlp_model import extract_skills_from_text, calculate_similarity, generate_recommendations
+import spacy
+import subprocess
+
+# Ensure the spaCy model is downloaded
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    subprocess.run(["python", "-m", "spacy", "download", "en_core_web_sm"])
+    nlp = spacy.load("en_core_web_sm")
 
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = {'.pdf', '.docx'}
