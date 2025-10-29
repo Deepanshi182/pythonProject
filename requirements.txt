@@ -6,3 +6,4 @@ spacy
 PyPDF2
 python-docx
 pdfminer.six
+pandas
