@@ -28,6 +28,14 @@ def extract_text_from_docx(path):
 
 
 
+# def extract_text(path):
+#     ext = os.path.splitext(path)[1].lower()
+#     if ext == '.pdf':
+#         return extract_text_from_pdf(path)
+#     elif ext == '.docx':
+#         return extract_text_from_docx(path)
+#     else:
+#         return ''
 def extract_text(path):
     ext = os.path.splitext(path)[1].lower()
     if ext == '.pdf':
